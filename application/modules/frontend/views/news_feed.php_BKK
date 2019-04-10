@@ -1,0 +1,339 @@
+    <div class="banner">
+        <img src="http://webdesky.com/studentx/asset/images/categories-banner.jpg" class="img-responsive banner-img" alt="">
+
+
+        <!-- <div class="banner-headings">
+            <h1>Share your story</h1>
+            <button class="btn-1">Register</button>
+        </div> -->
+
+        <!-- bottom-block -->
+        <div class="bottom-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 left-8">
+                        <div class="record">
+                            <img src="<?php echo base_url('asset/images/record.png')?>" alt="">
+                            <p>Record</p>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-4 left-8">
+
+                        <div class="news-feed">
+                            <a href="<?php echo base_url('frontend/news_feed'); ?>">
+                            <img src="<?php echo base_url('asset/images/news-feed.png')?>" alt="">
+                            <p>News Feed</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-4 left-8">
+                        <div class="events">
+                            <img src="<?php echo base_url('asset/images/events.png')?>" alt="">
+                            <p>Posts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //bottom-block -->
+    </div>
+
+
+        <!-- ====================================== Main ======================================= -->
+
+    <section>
+        <div class="main">
+            <div class="container">
+                <div class="row">
+                    
+                    
+                    <!-- Left Sider -->
+                    <div class="col-xs-12 col-sm-12 col-md-8 left-8">
+                        
+<!--                         <div class="postssss">
+                            <div class="panel panel-default">
+                              <div class="panel-heading">Make a post</div>
+                              <div class="panel-body">
+
+                                <div class="comment-1">
+
+                                    <ul>
+                                      <li><img src="http://webdesky.com/studentx/asset/images/user.png" class="prof"></li>
+                                      <li><textarea placeholder="Message" data-toggle="modal" data-target="#myModal"></textarea></li>
+                                    </ul>
+                                </div>
+                              </div>
+                            </div>
+                        </div> -->
+                        <!-- Post -->
+
+                      
+                        <!-- Post detail-->
+                        <div class="post-detail">
+
+
+                            <?php if(!empty($news_feed)){ 
+                              foreach ($news_feed as $key => $value) {
+                                
+                             
+                            ?>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 post-detail-border">
+
+                                  <div class="user-details">
+                                    <img src="<?php echo base_url('asset/uploads/').$value->image?> " class="" alt="">
+                                    <label><?php echo $value->username ?></label>
+                                </div>
+                                  
+                                    <!-- Post-1 -->
+                                    <div class="post-detail-img">
+                                       <a href="<? echo base_url('frontend/detail/').$value->feed_id; ?>"> 
+                                          <?php 
+                                            $image =  array('gif','png' ,'jpg','jpeg');
+                                            $video =  array('mp4','webm');
+                                            if(in_array($value->media_filetype,$image) ) { ?>
+                                                <img src="<?php echo base_url('asset/uploads/post/thumb/').$value->media_file ?>" class="post-images">
+                                            <?php }else if(in_array($value->media_filetype,$video)){?>
+                                                <iframe src="<?php echo base_url('asset/uploads/post/').$value->media_file ?>"  allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" class="full_video"></iframe>
+                                            <?php } ?>
+                                         </a>   
+                                        
+                                        <h4> <a href="<? echo base_url('frontend/detail/').$value->feed_id; ?>"> <?php  if(!empty($value)){ echo $value->title;}?></a></h4>
+                                        <p><?php  if(!empty($value)){ echo $value->contents;}?></p>
+                                        
+                                    </div>
+                                    <!-- //Post-1 -->
+                                </div>
+                            </div>
+                            <br>
+                            <?php  } } ?>
+                        </div>
+                        <!-- //Post detail-->
+                    </div>
+                    
+                    <!-- //Left Sider -->
+
+                    <!-- Right Sider -->
+                    <div class="col-xs-12 col-sm-12 col-md-4 left-8">
+                        <div class="stories">
+                            <h2>News Feed</h2>
+                            <img src="<?php echo base_url('asset/images/more.png')?>" class="more"  alt="" data-toggle="modal" data-target="#myModal">
+                            <!-- <form action="#" data-toggle="modal" data-target="#myModal">
+                              <div class="input-file-container">  
+                                <input class="input-file" id="my-file" type="file">
+                                <label tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label>
+                              </div>
+                              <p class="file-return"></p>
+                            </form> -->
+                            <script type="text/javascript">
+                                            document.querySelector("html").classList.add('js');
+
+                                            var fileInput  = document.querySelector( ".input-file" ),  
+                                                button     = document.querySelector( ".input-file-trigger" ),
+                                                the_return = document.querySelector(".file-return");
+                                                  
+                                            button.addEventListener( "keydown", function( event ) {  
+                                                if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+                                                    fileInput.focus();  
+                                                }  
+                                            });
+                                            button.addEventListener( "click", function( event ) {
+                                               fileInput.focus();
+                                               return false;
+                                            });  
+                                            fileInput.addEventListener( "change", function( event ) {  
+                                                the_return.innerHTML = this.value;  
+                                            });  
+                                        </script>
+
+                            <div class="row"> 
+                               
+                               <!-- Story -->
+                               <div class="stories-post" data-toggle="modalnews" data-target="#newsModal">
+                                   <div class="col-xs-4 col-sm-3 left padding-0">
+                                       <img src="<?php echo base_url('asset/images/upload.png')?>" alt="" data-toggle="modal" data-target="#myModal_s" class="upload-img">
+                                   </div>
+                                   <div class="col-xs-8 col-sm-9 right upload-img">
+                                       <h3 data-toggle="modal" data-target="#myModal_s" class="upload-img">Add your storyss</h3>
+                                       <!-- <label>Share video</label> -->
+                                   </div>
+                               </div>
+                               
+                                <!-- Story -->
+                               <?php if(!empty($news_feed)){
+                                  foreach ($news_feed as $key => $value) {
+
+                                ?>
+                                 <div class="stories-post">
+                                     <div class="col-xs-4 col-sm-3 left padding-0">
+                                         <img src="<?php echo base_url('asset/uploads/').$value->image ?>" alt="">
+                                     </div>
+                                     <div class="col-xs-8 col-sm-9 right">
+                                        <a href="<?php echo base_url('frontend/news_detail/').$value->feed_id ?>">
+                                         <h3><?php echo $value->title; ?></h3>
+                                        </a>
+                                         <!-- <label>Share video</label> -->
+                                     </div>
+                                 </div>
+                               <?php  } 
+                               if($key==6)
+                               break;
+                               } ?>
+                               <!-- /Story -->
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="other-div">
+                            <h2>Other</h2>
+                            <img src="<?php echo base_url('asset/images/more.png')?>" class="more" alt="">
+
+                            <!-- Slider other -->
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <!-- <ol class="carousel-indicators">
+                                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                                </ol> -->
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                  <div class="item active">
+                                    <img src="<?php echo base_url('asset/images/other-img.jpg')?>" alt="Los Angeles" style="width:100%;">
+                                    <div class="content-1">Lorem Ipsum is simply dummy text 
+                                        of the printing and typesetting 
+                                        industry.</div>
+                                  </div>
+
+                                  <div class="item">
+                                    <img src="<?php echo base_url('asset/images/other-img.jpg')?>" alt="Chicago" style="width:100%;">
+                                    <div class="content-1">Lorem Ipsum is simply dummy text 
+                                        of the printing and typesetting 
+                                        industry.</div>
+                                  </div>
+                                
+                                  <div class="item">
+                                    <img src="<?php echo base_url('asset/images/other-img.jpg')?>" alt="New york" style="width:100%;">
+                                    <div class="content-1">Lorem Ipsum is simply dummy text 
+                                        of the printing and typesetting 
+                                        industry.</div>
+                                  </div>
+                                </div>
+
+                                <!-- Left and right controls -->
+                                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                  <span class="glyphicon glyphicon-chevron-left"></span>
+                                  <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                  <span class="glyphicon glyphicon-chevron-right"></span>
+                                  <span class="sr-only">Next</span>
+                                </a>
+                              </div>
+                            <!-- //Slider other -->
+
+                        </div>
+
+
+                    </div>
+                    <!-- //Right Sider -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ====================================== //Main ===================================== -->
+
+    <script>
+      /* Ajax for Comment */
+
+    $(".commentbox").on('keyup', function (e) {
+     if (e.keyCode == 13) {
+
+          var path= '<?php echo base_url("asset/uploads/post/") ?>';
+            // Do something
+               
+              var id = $(this).attr('id');
+              var comment_txt= $(this).val()
+              var postid= $('#post_id'+id).val()
+              var senderid = $('#senderid'+id).val()
+              var senderimage = $('#senderimage'+id).val()
+              var sendername = $('#sendername'+id).val()
+              var mediadata = $('#mediadata'+id).val()
+              var mediatype = $('#mediatype'+id).val()
+             // var medianame = $('#medianame'+id).val();
+              
+              
+              $(this).val('');
+              if(mediatype!='') 
+                  name = Date.now()+'.'+ mediatype
+              else
+                name='';
+      
+              $.ajax({
+                  url: "<?php echo base_url('frontend/add_comment')?>",
+                  type: "POST",
+                  data: {
+                      post_id: postid,
+                      comment_by: senderid,
+                      comment: comment_txt,
+                      filecontent: mediadata,
+                      filetype:mediatype,
+                      table:'comment',
+                      filename:name
+                  },
+              }).done(function(data) {
+                
+                $('#commentlist'+id).append('<p><img width="30" height="30" src="'+senderimage+'">&nbsp;'+sendername+'&nbsp; '+comment_txt+'</p><p><img width="30" height="30" src="'+path+name+'"></p>');
+                  // swal("Deleted!", "Record was successfully deleted!", "success");
+                  // $('#tr_' + tr_id).remove();
+              }).error(function(data) {
+                  swal("Oops", "We couldn't connect to the server!", "error");
+              }); 
+
+
+        }
+    });
+
+    function readfile(input,i) 
+    { 
+
+       console.log(input.files[0].type);
+        if (input.files && input.files[0]) 
+        {
+          var reader = new FileReader();
+          var imagetype =input.files[0].type
+          var type= imagetype.split('/')
+     
+          reader.onload = function(e) {
+            $("#commentvideo"+i).hide();
+            $("#commentimage"+i).hide();
+
+            if(type[1]=='png'||type[1]=='jpg'||type[1]=='jpeg'||type[1]=='bmp'||type[1]=='gif')
+             {
+
+                $('#commentimage'+i).attr('src', e.target.result);
+                 $("#commentimage"+i).show(); 
+                $('#mediadata'+i).val(e.target.result)
+                $('#mediatype'+i).val(type[1]);
+                $("#commentimage"+i).show(); 
+                 
+             }
+            else
+             {
+              alert(e.target.result);
+              var filetype =type[1]
+                $('#mediadata'+i).val(e.target.result)
+                $("#commentvideo"+i).html('<source src="'+e.target.result+'" type="'+filetype+'"></source>' );
+                $("#commentvideo"+i).show();
+                $('#mediatype'+i).val(filetype);
+                $("#commentvideo"+i).show();
+             } 
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    </script>
